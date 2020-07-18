@@ -1,0 +1,22 @@
+#container * {text-align: center;}
+
+#container {padding: 10%;}
+#container img{
+    display: block;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: gray 2px solid;
+}
+
+#name{
+    font-size: 7vw;
+    padding: 10px;
+}
+
+#tag{color: gray;}
+
+#tag ,#name{
+    font-family: Arial, Helvetica, sans-serif;
+}
