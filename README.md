@@ -3,6 +3,6 @@
 
 ![alt text](https://imgur.com/QMGbK2K.gif)
 
-<h2>Start building your project:</h2>
+<h2>Start building your project at:</h2>
 
     /app/src/main/assets/
