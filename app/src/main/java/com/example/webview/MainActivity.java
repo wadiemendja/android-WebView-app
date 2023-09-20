@@ -102,14 +102,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivityForResult(Intent.createChooser(i, "File Chooser"), FILECHOOSER_RESULTCODE);
                     }
                 });
-                /* not necessary */
+                /* not necessary start */
                 webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
                 webSettings.setPluginState(WebSettings.PluginState.ON_DEMAND);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     webSettings.setAllowUniversalAccessFromFileURLs(true);
                 }
-                /* not necessary */
-                webView.loadUrl("https://azhaanexpress--demo-88ehduwm.web.app");
+                /* not necessary end */
+                webView.loadUrl("https://azhaanexpress.web.app");
                 // Prevent opening URLs outside of the app
                 webView.setWebViewClient(new WebViewClient() {
                     public boolean shouldOverrideUrlLoading(WebView view, String url){
