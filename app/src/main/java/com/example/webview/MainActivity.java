@@ -2,15 +2,20 @@ package com.example.webview;
 
 import static android.app.PendingIntent.getActivity;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -91,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
                         startActivityForResult(Intent.createChooser(i, "File Chooser"), FILECHOOSER_RESULTCODE);
                     }
                 });
+                class WebAppInterface {
+                    @JavascriptInterface
+                    public void copyToClipboard(String text) {
+                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("demo", text);
+                        clipboard.setPrimaryClip(clip);
+                    }
+                }
+                webView.addJavascriptInterface(new WebAppInterface(), "NativeAndroid");
                 /* not necessary start */
                 webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
                 webSettings.setPluginState(WebSettings.PluginState.ON_DEMAND);
