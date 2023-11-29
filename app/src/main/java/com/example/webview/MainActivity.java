@@ -115,9 +115,19 @@ public class MainActivity extends AppCompatActivity {
                 webView.loadUrl("https://azhaanexpress.web.app");
                 // Prevent opening URLs outside of the app
                 webView.setWebViewClient(new WebViewClient() {
+                    @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url){
-                        view.loadUrl(url);
-                        return false;
+                        if (url == null || url.startsWith("http://") || url.startsWith("https://")) {
+                            view.loadUrl(url);
+                            return false;
+                        }
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                            view.getContext().startActivity(intent);
+                            return true;
+                        } catch (Exception e) {
+                            return true;
+                        }
                     }
                 });
             }
